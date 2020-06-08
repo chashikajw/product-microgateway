@@ -82,7 +82,7 @@ func TestGenerateRegex(t *testing.T) {
 	}
 
 	for _, item := range dataItems{
-		resultPattern := GenerateRegex(item.inputpath)
+		resultPattern := generateRegex(item.inputpath)
 		resultIsMatching, err := regexp.MatchString(resultPattern,item.userInputPath)
 
 		assert.Equal(t, item.isMatched, resultIsMatching, item.message)

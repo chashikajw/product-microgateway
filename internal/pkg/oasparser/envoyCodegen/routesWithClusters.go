@@ -169,7 +169,7 @@ func createRoute(xWso2Basepath string,endpoint apiDefinition.Endpoint, resourceP
 		action *v2route.Route_Route
 		match *v2route.RouteMatch
 	)
-	routePath := GenerateRoutePaths(xWso2Basepath,endpoint.GetBasepath(), resourcePath)
+	routePath := generateRoutePaths(xWso2Basepath,endpoint.GetBasepath(), resourcePath)
 
 	match = &v2route.RouteMatch{
 		PathSpecifier: &v2route.RouteMatch_SafeRegex{
@@ -230,22 +230,22 @@ func createRoute(xWso2Basepath string,endpoint apiDefinition.Endpoint, resourceP
 }
 
 //generates route paths for the api resources
-func GenerateRoutePaths(xWso2Basepath string, basePath string, resourcePath string) string {
+func generateRoutePaths(xWso2Basepath string, basePath string, resourcePath string) string {
 	newPath := ""
 	if xWso2Basepath != "" {
 		fullpath := xWso2Basepath + resourcePath
-		newPath = GenerateRegex(fullpath)
+		newPath = generateRegex(fullpath)
 
 	} else {
 		fullpath := basePath + resourcePath
-		newPath = GenerateRegex(fullpath)
+		newPath = generateRegex(fullpath)
 	}
 
 	return newPath
 }
 
 //generates regex for the resources which have path paramaters.
-func GenerateRegex(fullpath string) string {
+func generateRegex(fullpath string) string {
 	pathParaRegex := "([^/]+)"
 	endRegex := "(\\?([^/]+))?"
 	newPath := ""
