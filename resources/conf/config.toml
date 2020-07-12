@@ -22,4 +22,6 @@ listenerPort = 10000
 apiDefaultPort = 8080
 clusterTimeoutInSeconds = 20
 
-  
+[filterManager]
+ip = "localhost"
+port = "9096"

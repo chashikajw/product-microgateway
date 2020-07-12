@@ -14,27 +14,11 @@
  *  limitations under the License.
  *
  */
-package main
+package filter_manager
 
-import (
-	logger "github.com/sirupsen/logrus"
-	"github.com/wso2/micro-gw/cmd/microgateway"
-	_ "github.com/wso2/micro-gw/internal/pkg/logging"
-	"os"
-
-	db "github.com/wso2/micro-gw/filter-manager"
-)
-
-
-func main() {
-
-	var file string
-	if len(os.Args) > 1 {
-		file = os.Args[1]
-		logger.Debug(file)
-	}
-
-	db.DbSetup()
-	microgateway.StartMicroGateway(os.Args)
-
+type FilterChain struct {
+	uuid string
+	label string
+	host string
+	apiPort uint32
 }

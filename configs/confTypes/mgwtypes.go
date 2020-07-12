@@ -94,4 +94,10 @@ type Config struct {
 		ApiDefaultPort          uint32
 		ClusterTimeoutInSeconds time.Duration
 	}
+
+	// The filter manager parameters.
+	FilterManager struct{
+		IP string
+		Port string
+	}
 }
