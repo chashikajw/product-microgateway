@@ -18,11 +18,14 @@
 
 package org.wso2.mgw.filterchain.gRPC.server;
 
+import com.google.rpc.Code;
 import com.google.rpc.Status;
 import io.envoyproxy.envoy.service.auth.v2.AuthorizationGrpc;
 import io.envoyproxy.envoy.service.auth.v2.CheckRequest;
 import io.envoyproxy.envoy.service.auth.v2.CheckResponse;
 import io.envoyproxy.envoy.service.auth.v2.OkHttpResponse;
+import io.envoyproxy.envoy.service.auth.v2.DeniedHttpResponse;
+
 import io.grpc.stub.StreamObserver;
 
 public class ExtAuthService extends AuthorizationGrpc.AuthorizationImplBase {
@@ -38,10 +41,16 @@ public class ExtAuthService extends AuthorizationGrpc.AuthorizationImplBase {
         // jwt authentication should happens here
         //Status status = Status.OK;
         CheckResponse response = CheckResponse.newBuilder()
-                .setStatus(Status.newBuilder().build())
+                .setStatus(Status.newBuilder().setCode(Code.OK_VALUE).build())
                 .setOkResponse(OkHttpResponse.newBuilder().build())
                 .build();
+        
 
+        CheckResponse response1 = CheckResponse.newBuilder()
+                .setStatus(Status.newBuilder().setCode(Code.UNAUTHENTICATED_VALUE).build())
+                .setDeniedResponse(DeniedHttpResponse.newBuilder().build())
+                .build();
+        System.out.println("this is respo"+ response1);
         // Use responseObserver to send a single response back
         responseObserver.onNext(response);
 
