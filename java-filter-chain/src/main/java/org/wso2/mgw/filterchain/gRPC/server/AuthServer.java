@@ -20,7 +20,6 @@ package org.wso2.mgw.filterchain.gRPC.server;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-
 public class AuthServer {
 
     public static void main ( String[] args ) throws Exception
