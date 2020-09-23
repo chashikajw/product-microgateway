@@ -82,22 +82,22 @@ public class JWTValidator{
         String[] tokenContent = accessToken.split("\\.");
 
         if(tokenContent.length != 3){
-            System.out.println("Invalid JWT token received, token must have 3 parts");
+            //System.out.println("Invalid JWT token received, token must have 3 parts");
         }
         String signedContent = tokenContent[0] + "." + tokenContent[1];
         //System.out.println(signedContent);
         boolean isVerified = validateSignature(accessToken, tokenContent[2]);
         if(isVerified){
-            System.out.println("JWT Token is valid");
+            //System.out.println("JWT Token is valid");
         } else {
-            System.out.println("JWT Token is not valid");
+            //System.out.println("JWT Token is not valid");
         }
         return isVerified;
     }
 
     // validate the signature
     public static boolean validateSignature(String jwtToken, String signature){
-        System.out.println("Inside validateSignature");
+        //System.out.println("Inside validateSignature");
         JWSHeader header;
         JWTClaimsSet payload = null;
         SignedJWT parsedJWTToken;
@@ -134,7 +134,7 @@ public class JWTValidator{
     public static RSAPublicKey readPublicKey() {
         try {
             String strKeyPEM = "";
-            BufferedReader br = new BufferedReader(new FileReader("./java-filter-chain/src/main/java/org/wso2/mgw/filterchain/JWTValidator/wso2carbon.pem"));
+            BufferedReader br = new BufferedReader(new FileReader("./home/ubuntu/product-microgateway/java-filter-chain/src/main/java/org/wso2/mgw/filterchain/JWTValidator/wso2carbon.pem"));
             String line;
             while ((line = br.readLine()) != null) {
                 strKeyPEM += line + "\n";
