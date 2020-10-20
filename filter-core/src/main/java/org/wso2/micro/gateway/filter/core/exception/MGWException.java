@@ -15,18 +15,24 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.micro.gateway.filter.core.auth;
 
-import org.wso2.micro.gateway.filter.core.api.RequestContext;
-import org.wso2.micro.gateway.filter.core.exception.APISecurityException;
+package org.wso2.micro.gateway.filter.core.exception;
 
 /**
- * Defines the interface to implement an authenticator. This authenticator can be oauth2(opaque, jwt), MTLS, basic
- * and etc.
+ * This is the custom exception class for API management.
  */
-public interface Authenticator {
+public class MGWException extends Exception {
 
-    boolean canAuthenticate(RequestContext requestContext);
+    public MGWException(String msg) {
+        super(msg);
+    }
 
-    AuthenticationContext authenticate(RequestContext requestContext) throws APISecurityException;
+    public MGWException(String msg, Throwable e) {
+        super(msg, e);
+    }
+
+    public MGWException(Throwable throwable) {
+        super(throwable);
+    }
+
 }

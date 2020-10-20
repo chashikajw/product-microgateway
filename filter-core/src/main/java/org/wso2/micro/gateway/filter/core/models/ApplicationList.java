@@ -15,18 +15,37 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.micro.gateway.filter.core.auth;
 
-import org.wso2.micro.gateway.filter.core.api.RequestContext;
-import org.wso2.micro.gateway.filter.core.exception.APISecurityException;
+package org.wso2.micro.gateway.filter.core.models;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Defines the interface to implement an authenticator. This authenticator can be oauth2(opaque, jwt), MTLS, basic
- * and etc.
+ * Holds details about list of applications.
  */
-public interface Authenticator {
+public class ApplicationList {
 
-    boolean canAuthenticate(RequestContext requestContext);
+    private Integer count = null;
+    private List<Application> list = new ArrayList<>();
 
-    AuthenticationContext authenticate(RequestContext requestContext) throws APISecurityException;
+    public Integer getCount() {
+
+        return count;
+    }
+
+    public void setCount(Integer count) {
+
+        this.count = count;
+    }
+
+    public List<Application> getList() {
+
+        return list;
+    }
+
+    public void setList(List<Application> list) {
+
+        this.list = list;
+    }
 }

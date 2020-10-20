@@ -15,18 +15,30 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.micro.gateway.filter.core.auth;
 
-import org.wso2.micro.gateway.filter.core.api.RequestContext;
-import org.wso2.micro.gateway.filter.core.exception.APISecurityException;
+package org.wso2.micro.gateway.filter.core.subscription;
 
 /**
- * Defines the interface to implement an authenticator. This authenticator can be oauth2(opaque, jwt), MTLS, basic
- * and etc.
+ * Utility methods related to subscription data store functionalities.
  */
-public interface Authenticator {
+public class SubscriptionDataStoreUtil {
 
-    boolean canAuthenticate(RequestContext requestContext);
+    public static final String DELEM_PERIOD = ".";
 
-    AuthenticationContext authenticate(RequestContext requestContext) throws APISecurityException;
+    public static String getAPICacheKey(String context, String version) {
+
+        return context + DELEM_PERIOD + version;
+    }
+
+    public static String getSubscriptionCacheKey(int appId, int apiId) {
+
+        return appId + DELEM_PERIOD + apiId;
+    }
+
+    public static String getPolicyCacheKey(String tierName, int tenantId) {
+
+        return tierName + DELEM_PERIOD + tenantId;
+    }
+
 }
+

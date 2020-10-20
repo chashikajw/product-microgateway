@@ -15,18 +15,25 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.micro.gateway.filter.core.auth;
 
-import org.wso2.micro.gateway.filter.core.api.RequestContext;
-import org.wso2.micro.gateway.filter.core.exception.APISecurityException;
+package org.wso2.micro.gateway.filter.core.models;
 
 /**
- * Defines the interface to implement an authenticator. This authenticator can be oauth2(opaque, jwt), MTLS, basic
- * and etc.
+ * Entity for keeping Application Policy
  */
-public interface Authenticator {
+public class ApplicationPolicy extends Policy {
 
-    boolean canAuthenticate(RequestContext requestContext);
+    private static final String type = "APPLICATION";
 
-    AuthenticationContext authenticate(RequestContext requestContext) throws APISecurityException;
+    @Override
+    public String getCacheKey() {
+
+        return PolicyType.APPLICATION + DELEM_PERIOD + super.getCacheKey();
+    }
+
+    @Override
+    public String toString() {
+        return "ApplicationPolicy [getId()=" + getId() + ", getQuotaType()=" + getQuotaType() + ", isContentAware()="
+                + isContentAware() + ", getTenantId()=" + getTenantId() + ", getName()=" + getName() + "]";
+    }
 }

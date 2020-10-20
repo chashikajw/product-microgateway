@@ -15,18 +15,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.micro.gateway.filter.core.auth;
 
-import org.wso2.micro.gateway.filter.core.api.RequestContext;
-import org.wso2.micro.gateway.filter.core.exception.APISecurityException;
+package org.wso2.micro.gateway.filter.core.common;
 
 /**
- * Defines the interface to implement an authenticator. This authenticator can be oauth2(opaque, jwt), MTLS, basic
- * and etc.
+ * An interface to indicate that an entity provides a cacheKey
+ *
+ * @param <K> Type of the CacheKey
  */
-public interface Authenticator {
+public interface CacheableEntity<K> {
 
-    boolean canAuthenticate(RequestContext requestContext);
+    String DELEM_PERIOD = ":";
 
-    AuthenticationContext authenticate(RequestContext requestContext) throws APISecurityException;
+    /**
+     * Gets the Cache Key of an entity.
+     *
+     * @return K
+     */
+    public K getCacheKey();
 }

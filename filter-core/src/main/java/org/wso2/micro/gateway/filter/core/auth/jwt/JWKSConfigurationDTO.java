@@ -15,18 +15,45 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.micro.gateway.filter.core.auth;
 
-import org.wso2.micro.gateway.filter.core.api.RequestContext;
-import org.wso2.micro.gateway.filter.core.exception.APISecurityException;
+package org.wso2.micro.gateway.filter.core.auth.jwt;
 
 /**
- * Defines the interface to implement an authenticator. This authenticator can be oauth2(opaque, jwt), MTLS, basic
- * and etc.
+ * Holds the configurations related to jwks endpoint of a key manager.
  */
-public interface Authenticator {
+public class JWKSConfigurationDTO {
 
-    boolean canAuthenticate(RequestContext requestContext);
+    private String url;
+    private boolean enabled;
 
-    AuthenticationContext authenticate(RequestContext requestContext) throws APISecurityException;
+    public String getUrl() {
+
+        return url;
+    }
+
+    public void setUrl(String url) {
+
+        this.url = url;
+    }
+
+    public boolean isEnabled() {
+
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+
+        this.enabled = enabled;
+    }
+
+    public JWKSConfigurationDTO(String url, boolean enabled) {
+
+        this.url = url;
+        this.enabled = enabled;
+    }
+
+    public JWKSConfigurationDTO() {
+
+    }
 }
+
