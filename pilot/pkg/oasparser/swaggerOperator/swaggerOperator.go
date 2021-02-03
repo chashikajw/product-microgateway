@@ -37,7 +37,7 @@ func GetMgwSwagger(apiContent []byte) apiDefinition.MgwSwagger {
 
 	apiJsn, err := utills.ToJSON(apiContent)
 	if err != nil {
-		//log.Fatal("Error converting api file to json:", err)
+		logger.LoggerOasparser.Error("Error converting api file to json:", err)
 	}
 
 	swaggerVerison := utills.FindSwaggerVersion(apiJsn)

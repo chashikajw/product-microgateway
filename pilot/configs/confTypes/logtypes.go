@@ -28,7 +28,6 @@ type accessLog struct {
 
 // The log configuration struct.
 type LogConfig struct {
-
 	Logfile string
 	LogLevel  string
 	// log rotation parameters.
